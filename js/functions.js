@@ -1,16 +1,30 @@
-//productos
-let modelo = prompt('Ingrese el tipo de producto');
-let producto = parseInt(prompt("Ingresa el monto del producto"));
+let tipo = prompt("Ingrese el tipo de electrodomestico");
+let precio = parseFloat(prompt("Ingrese el monto a pagar"));
+
+if(tipo === ""){
+    console.log("Ingrese un elemento valido");
+}
+
+
+class Product{
+    constructor(tipo, precio){
+        this.tipo = tipo;
+        this.precio = parseFloat(precio);
+
+       
+    }
+
+    Sumaiva() {
+        this.precio = this.precio * 1.21;
+    };
+}
 
 
 const productos = [];
-productos.push(modelo);
+productos.push(new Product(tipo, precio));
 
-const iva = (producto)=> {
-    let porcentaje = (producto * 21)/100;
-    let resultado = producto + porcentaje;
-    return resultado;
-}
-
-console.log(`El tipo de producto es ${productos} y el monto total con impuestos es ${iva(producto)}`);
+for (const producto of productos) {
+    producto.Sumaiva();
+    productos.forEach(producto => console.log(producto));
+};
 
